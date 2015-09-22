@@ -7,6 +7,7 @@
 \pgfplotsset{compat=newest}
 \usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage{tcolorbox}
 
 % Latin Modern
 \usepackage{lmodern}
@@ -138,7 +139,38 @@
 	\begin{block}{Cool block}
 		Get nice visual effects by organizing content into \textbf{blocks}. Title background color matches the red from DTU logo.
 	\end{block}
+	\vspace*{3mm}
+	\begin{minipage}[l]{0.49\textwidth}
+	\begin{tcolorbox}[title={Framed blocks}]
+%		\begin{minipage}[c]{0.45\textwidth}
+			Use the \texttt{tcolorbox} package to get a calm and customizable block.
+%			\begin{tcolorbox}[title={Default}]\end{tcolorbox}
+%			\begin{tcolorbox}[colframe=dtured,title={Red}]\end{tcolorbox}
+%			\begin{tcolorbox}[colframe=dtugrey,title={Grey}]\end{tcolorbox}
+%			\begin{tcolorbox}[colframe=dtudarkgreen,title={Green}]\end{tcolorbox}
+%		\end{minipage}
+%		\begin{minipage}[c]{0.45\textwidth}
+%			\begin{tcolorbox}[colframe=dtudarkblue,title={Blue}]\end{tcolorbox}
+%			\begin{tcolorbox}[colframe=dtuorange,title={Orange}]\end{tcolorbox}
+%			\begin{tcolorbox}[colframe=dtuviolet,title={Violet}]\end{tcolorbox}
+%			\begin{tcolorbox}[colframe=ipugreen,title={IPU Green}]\end{tcolorbox}
+%		\end{minipage} 
+   \end{tcolorbox}
+   \end{minipage} 
+   \hfill 
+   \begin{minipage}[l]{0.49\textwidth}
+   \begin{tcolorbox}[colback=white, colframe=dtured, title={Custom block}]
+      The package has many options to change the appearance of the blocks.
+   \end{tcolorbox}
+   \end{minipage} 
+	
+%	\renewenvironment{block}[1]{%
+%  \begin{tcolorbox}[title={#1}]
+%}{%
+%  \end{tcolorbox}
+%}
 }
+
 
 \subsection{Tables}
 \frame{
@@ -234,8 +266,8 @@
 		
 		\item DTU recommends Verdana but this font type is not available by default on all operating systems:
 		\begin{itemize}
-			\item Windows: include the \texttt{verdana} package in the preamble and MiKTeX will do the rest;
-			\item Linux and OS X: before including the \texttt{verdana} package in your preamble, run the \texttt{install\_fonts.sh} script from our package.
+			\item \textbf{Windows:} include the \texttt{verdana} package in the preamble and MiKTeX will do the rest. Remember to set the \texttt{\textbackslash usepackage[nofligs]\{verdana\}} option due to missing ligatures in new versions of Microsofts Verdana font.
+			\item \textbf{Linux and OS X:} before including the \texttt{verdana} package in your preamble, run the \texttt{install\_fonts.sh} script from our package. The old versions of Verdana include more ligatures and no special option has to be set.
 		\end{itemize}
 	\end{itemize}        
 }
