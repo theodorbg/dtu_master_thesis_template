@@ -144,6 +144,10 @@
 	\end{enumerate}
 }
 
+% Customisation for tcolorbox, the settings make it look similar to the other blocks
+\tcbset{colback=white, colframe=dtured, fonttitle=\bfseries}
+\tcbset{left=0.25em, right=0.25em, top=0.25em, bottom=0.25em, middle=0.25em}
+
 \subsection{Blocks}
 \frame{
 	\frametitle{Blocks}
@@ -153,24 +157,17 @@
 	\begin{columns}[T, onlytextwidth]
 		\begin{column}{.475\textwidth}
 			\begin{tcolorbox}[title={Framed blocks}]\raggedright
-				%		\begin{minipage}[c]{0.45\textwidth}
 				Use the \texttt{tcolorbox} package to get a calm and customizable block.
-				%			\begin{tcolorbox}[title={Default}]\end{tcolorbox}
-				%			\begin{tcolorbox}[colframe=dtured,title={Red}]\end{tcolorbox}
-				%			\begin{tcolorbox}[colframe=dtugrey,title={Grey}]\end{tcolorbox}
-				%			\begin{tcolorbox}[colframe=dtudarkgreen,title={Green}]\end{tcolorbox}
-				%		\end{minipage}
-				%		\begin{minipage}[c]{0.45\textwidth}
-				%			\begin{tcolorbox}[colframe=dtudarkblue,title={Blue}]\end{tcolorbox}
-				%			\begin{tcolorbox}[colframe=dtuorange,title={Orange}]\end{tcolorbox}
-				%			\begin{tcolorbox}[colframe=dtuviolet,title={Violet}]\end{tcolorbox}
-				%			\begin{tcolorbox}[colframe=ipugreen,title={IPU Green}]\end{tcolorbox}
-				%		\end{minipage} 
 			\end{tcolorbox}
 		\end{column}
+		
 		\begin{column}{.475\textwidth}
-			\begin{tcolorbox}[colback=white, colframe=dtured, title={Custom block}]\raggedright
+		% You can create colourful boxes with the colframe option. 
+		% colframe=[dtured|dtugrey|dtudarkgreen|dtudarkblue|dtuorange|dtuviolet|ipugreen]
+			\begin{tcolorbox}[colframe=dtudarkgreen, title={Custom block}]\raggedright
 				The package has many options to change the appearance of the blocks.
+				\tcblower
+				Lower part of the block.
 			\end{tcolorbox}
 		\end{column}
 	\end{columns}
