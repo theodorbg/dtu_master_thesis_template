@@ -9,19 +9,28 @@
 \usepackage{siunitx}
 \usepackage{tcolorbox}
 
-% Latin Modern
+
+% 1) Latin Modern
 %\usepackage{lmodern}
-% Verdana font type
-%\usepackage[nofligs]{verdana}
-% Helvetica
+% 
+% 2) Verdana font type
+%\usepackage{arev}             % Vera Sans for maths and typewriter
+%\usepackage[nofligs]{verdana} % Overwrite normal text with real Verdana
+% 
+% 3) Helvetica (Arial's big brother)
 %\usepackage{helvet}
-% Times (text and math)
-%\usepackage{newtx, newtxmath}
-% Nice font combination
-\usepackage{lmodern} % tt
-\usepackage{mathptmx} % math
+% 
+% 4) Times (text and math)
+%\usepackage{newtxtext, newtxmath}
+%
+% 5) Another nice font combination
+\usepackage{lmodern}       % tt
+\usepackage{mathptmx}      % math
 \usepackage{sourcesanspro} % sans-serif
-\usepackage{charter} % serif
+\usepackage{charter}       % serif
+
+
+
 
 \usetheme[department=elektro]{DTU}
 
@@ -167,7 +176,7 @@
 			\begin{tcolorbox}[colframe=dtudarkgreen, title={Custom block}]\raggedright
 				The package has many options to change the appearance of the blocks.
 				\tcblower
-				Lower part of the block.
+				Lower part: a i j and Q J R I.
 			\end{tcolorbox}
 		\end{column}
 	\end{columns}
@@ -268,11 +277,11 @@
 		\begin{itemize}
 			\item \texttt{\textbackslash usepackage\{lmodern\} \% Latin Modern}
 			\item \texttt{\textbackslash usepackage\{helvet\} \% Helvetica}
-			\item \texttt{\textbackslash usepackage\{verdana\} \% Verdana}
+			\item \texttt{\textbackslash usepackage[nofligs]\{verdana\} \% Verdana}
+			\item \texttt{\textbackslash usepackage\{arev\} \% Vera Sans, Verdana clone with maths}
 			\item \texttt{\textbackslash usepackage\{newtx, newtxmath\} \% Times (text and math)}
 		\end{itemize}
-		
-		\item DTU recommends Verdana but this font type is not available by default on all operating systems:
+		\item DTU recommends Verdana but this font type is not available by default on all operating systems. You can use Vera Sans from the \texttt{arev} package or install Verdana:
 		\begin{itemize}
 			\item \textbf{Windows:} include the \texttt{verdana} package in the preamble and MiKTeX will do the rest. Remember to set the \texttt{\textbackslash usepackage[nofligs]\{verdana\}} option due to missing ligatures in new versions of Microsoft's Verdana font.
 			\item \textbf{Linux and OS X:} before including the \texttt{verdana} package in your preamble, run the \texttt{install\_fonts.sh} script from our package. The old versions of Verdana include more ligatures and no special option has to be set.
