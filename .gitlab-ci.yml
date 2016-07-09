@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+  - deploy
+
+# Fetch logos, convert them and store them in dturesources
+build_stage:
+  stage: build
+  script: make build
+
+# Assert the logo files exist
+test_stage:
+  stage: test
+  script: make test
+
+# If the build and test stages succeed, deploy doc/ and tex/ artifacts
+deploy_stage:
+  stage: deploy
+  script: echo
+  artifacts:
+    paths:
+    - doc/
+    - tex/
