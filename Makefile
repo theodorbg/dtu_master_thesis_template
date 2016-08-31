@@ -108,7 +108,8 @@ WMF_FILES := $(shell curl -l ftp://$(FTP_USER):$(FTP_PASSWORD)@$(FTP_PATH)/ \
 # 	cd $(INKSCAPE) && ./configure && make
 
 build:
-	@echo $(shell ./bin/inkscape)	# Do we have inkscape available?
+	tar -xzvf uniconvertor.tar.gz
+	@echo $(shell ./uniconvertor/uniconvertor)	# Do we have uniconvertor available?
 	@echo "Build complete"
 
 
