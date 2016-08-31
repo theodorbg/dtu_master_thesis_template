@@ -27,9 +27,9 @@ logo_path := $(resources_path)/logo
 # Global variables
 .DEFAULT_GOAL := build
 
-WMF_FILES := $(shell curl -l ftp://$(FTP_USER):$(FTP_PASSWORD)@$(FTP_PATH)/ \
-                     | grep wmf \
-                     | grep -v brugesikke)
+# WMF_FILES := $(shell curl -l ftp://$(FTP_USER):$(FTP_PASSWORD)@$(FTP_PATH)/ \
+#                      | grep wmf \
+#                      | grep -v brugesikke)
 
 # Department logos
 # DEPARTMENT_LOGO_WMF_FILES := $(filter-out R_% Logo%, $(WMF_FILES))
@@ -108,8 +108,7 @@ WMF_FILES := $(shell curl -l ftp://$(FTP_USER):$(FTP_PASSWORD)@$(FTP_PATH)/ \
 # 	cd $(INKSCAPE) && ./configure && make
 
 build:
-	tar -xzvf uniconvertor.tar.gz
-	@echo $(shell ./uniconvertor/uniconvertor)	# Do we have uniconvertor available?
+	@echo $(shell find /usr/bin)	# Do we have uniconvertor available?
 	@echo "Build complete"
 
 
@@ -118,7 +117,7 @@ build:
 test:
 
 
-.PHONY: build department_logo department_name_logo frieze
-.INTERMEDIATE: $(DEPARTMENT_LOGO_WMF_FILES) $(DEPARTMENT_LOGO_SVG_FILES) \
-               $(DEPARTMENT_NAME_LOGO_WMF_FILES) $(DEPARTMENT_NAME_LOGO_SVG_FILES) \
-               $(FRIEZE_EPS_FILES)
+# .PHONY: build department_logo department_name_logo frieze
+# .INTERMEDIATE: $(DEPARTMENT_LOGO_WMF_FILES) $(DEPARTMENT_LOGO_SVG_FILES) \
+#                $(DEPARTMENT_NAME_LOGO_WMF_FILES) $(DEPARTMENT_NAME_LOGO_SVG_FILES) \
+#                $(FRIEZE_EPS_FILES)
