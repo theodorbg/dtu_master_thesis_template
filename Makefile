@@ -107,8 +107,11 @@ logo_path := $(resources_path)/logo
 # 	tar zxf $(INKSCAPE).tar.gz
 # 	cd $(INKSCAPE) && ./configure && make
 
+# fetch:
+# 	curl google.com
+
 build:
-	@echo $(shell find /usr/bin)	# Do we have uniconvertor available?
+	@echo "$(shell curl https://github.com/sk1project/uniconvertor.git)"
 	@echo "Build complete"
 
 
