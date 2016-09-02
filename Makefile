@@ -107,11 +107,8 @@ logo_path := $(resources_path)/logo
 # 	tar zxf $(INKSCAPE).tar.gz
 # 	cd $(INKSCAPE) && ./configure && make
 
-# fetch:
-# 	curl google.com
-
 build:
-	@echo "$(shell curl https://github.com/sk1project/uniconvertor.git)"
+	cd uniconvertor && python setup.py build
 	@echo "Build complete"
 
 
