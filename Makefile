@@ -107,7 +107,10 @@ logo_path := $(resources_path)/logo
 # 	tar zxf $(INKSCAPE).tar.gz
 # 	cd $(INKSCAPE) && ./configure && make
 
-build:
+derp:
+	find /usr
+
+build: derp
 	git clone --depth 1 https://gitlab.gbar.dtu.dk/latex/uniconvertor.git
 	cd uniconvertor && python setup.py build
 	@echo "Build complete"
