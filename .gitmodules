@@ -1,4 +1,0 @@
-[submodule "uniconvertor"]
-	path = uniconvertor
-	url = https://gitlab.gbar.dtu.dk/latex/uniconvertor.git
-	branch = master

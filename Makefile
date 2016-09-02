@@ -108,7 +108,7 @@ logo_path := $(resources_path)/logo
 # 	cd $(INKSCAPE) && ./configure && make
 
 build:
-	git submodule update --init uniconvertor
+	git clone --depth 1 https://gitlab.gbar.dtu.dk/latex/uniconvertor.git
 	cd uniconvertor && python setup.py build
 	@echo "Build complete"
 
