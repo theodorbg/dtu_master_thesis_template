@@ -108,6 +108,7 @@ logo_path := $(resources_path)/logo
 # 	cd $(INKSCAPE) && ./configure && make
 
 build:
+	git submodule update --init uniconvertor
 	cd uniconvertor && python setup.py build
 	@echo "Build complete"
 
