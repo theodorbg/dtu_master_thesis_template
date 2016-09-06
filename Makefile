@@ -108,7 +108,7 @@ logo_path := $(resources_path)/logo
 # 	cd $(INKSCAPE) && ./configure && make
 
 derp:
-	find /usr
+	@echo $(shell python --version)
 
 build: derp
 	git clone --depth 1 https://gitlab.gbar.dtu.dk/latex/uniconvertor.git
