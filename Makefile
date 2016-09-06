@@ -111,7 +111,7 @@ derp:
 	@echo $(shell python --version)
 
 build: derp
-	git clone --depth 1 https://gitlab.gbar.dtu.dk/latex/uniconvertor.git
+	git clone --branch dtu_latex --depth 1 https://gitlab.gbar.dtu.dk/latex/uniconvertor.git
 	cd uniconvertor && python setup.py build
 	@echo "Build complete"
 
