@@ -109,7 +109,7 @@ logo_path := $(resources_path)/logo
 
 uniconvertor:
 	wget https://gitlab.gbar.dtu.dk/latex/uniconvertor/builds/2147/artifacts/download -O uniconvertor.zip
-	unzip uniconvertor.zip
+	gunzip uniconvertor.zip
 
 build: uniconvertor
 	@echo "Build complete"
