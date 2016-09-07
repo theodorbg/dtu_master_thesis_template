@@ -108,8 +108,9 @@ logo_path := $(resources_path)/logo
 # 	cd $(INKSCAPE) && ./configure && make
 
 uniconvertor:
+	@echo $(shell ls /usr/bin)
 	wget https://gitlab.gbar.dtu.dk/latex/uniconvertor/builds/2147/artifacts/download -O uniconvertor.zip
-	gunzip uniconvertor.zip
+	7z x uniconvertor.zip
 
 build: uniconvertor
 	@echo "Build complete"
