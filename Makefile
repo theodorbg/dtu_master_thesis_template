@@ -109,6 +109,8 @@ logo_path := $(resources_path)/logo
 
 uniconvertor:
 	@echo $(shell ls /usr/bin)
+	@echo $(shell ls /bin)
+	@echo $(shell ls /usr/local/bin)
 	wget https://gitlab.gbar.dtu.dk/latex/uniconvertor/builds/2147/artifacts/download -O uniconvertor.zip
 	7z x uniconvertor.zip
 
