@@ -70,7 +70,7 @@ OS X:
 
 ## Overleaf ##
 
-[Overleaf](www.overleaf.com) is an online TeX editor making collaboration *much* easier.
+[Overleaf](https://www.overleaf.com) is an online TeX editor making collaboration *much* easier.
 DTU has a licence for students and employees which can all benefit from collaborating on documents.
 
 First, ensure you are affilated with DTU. Ensure that your student mail or employee mail
