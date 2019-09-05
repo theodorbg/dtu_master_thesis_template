@@ -1,0 +1,12 @@
+[submodule "overleaf/Poster"]
+	path = overleaf/Poster
+	url = https://git.overleaf.com/5cdbfe86d0b38c095359f3c7
+[submodule "overleaf/Letter"]
+	path = overleaf/Letter
+	url = https://git.overleaf.com/5cdbfd8ad0b38c095359f23d
+[submodule "overleaf/Cover"]
+	path = overleaf/Cover
+	url = https://git.overleaf.com/5cdbf9e5d0b38c095359ef11
+[submodule "overleaf/Beamer"]
+	path = overleaf/Beamer
+	url = https://git.overleaf.com/5cd40702e8b026286ffe8ef2
