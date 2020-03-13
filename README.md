@@ -80,10 +80,4 @@ Once you are affiliated with DTU you have an extra option when creating a new pr
 simply go to [DTU templates](https://www.overleaf.com/edu/dtu#templates) directly. From there you can
 select our offered templates and directly begin to work with them.
 
-### Overleaf folder ###
 
-The overleaf folder in the repository contains submodules for the templates which are connected to Overleaf. These are their own seperate git project and should be handled as such.
-
-## ShareLaTeX ##
-
-ShareLaTeX and Overleaf is now a joint venture named Overleaf. See [Overleaf](#overleaf) for details.
