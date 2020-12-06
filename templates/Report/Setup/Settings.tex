@@ -48,11 +48,13 @@ purple,         fill=purple         \\%
     % If True set headings to NeoSans Pro
 	\newfontface\NeoSansProReg{NeoSansPro-Regular.otf}
 	\newfontface\NeoSansProMed{NeoSansPro-Medium.otf}
-	\titleformat{\part}[display]{\NeoSansProMed \huge \centering}{\NeoSansProMed \Huge \thepart}{1em}{\thispagestyle{empty}}{}
-	\titleformat{\chapter}{\NeoSansProMed\huge}{\thechapter}{1em}{\raggedright}
-	\titleformat{\section}{\NeoSansProMed\Large}{\thesection}{1em}{\raggedright}
-	\titleformat{\subsection}{\NeoSansProMed\large}{\thesubsection}{1em}{\raggedright}
-	\titleformat{\subsubsection}{\NeoSansProMed\normalsize}{\thesubsubsection}{1em}{\raggedright}
+	\titleformat{\part}[display]{\NeoSansProMed \huge \centering}{\NeoSansProMed \Huge \thepart}{1em}{\thispagestyle{empty}#1}{}
+	\titleformat{\chapter}{\NeoSansProMed\huge}{\thechapter}{1em}{\raggedright#1}
+	\titleformat{\section}{\NeoSansProMed\Large}{\thesection}{1em}{\raggedright#1}
+	\titleformat{\subsection}{\NeoSansProMed\large}{\thesubsection}{1em}{\raggedright#1}
+	\titleformat{\subsubsection}{\NeoSansProMed\normalsize}{\thesubsubsection}{1em}{\raggedright#1}
+	
+	% The \par is needed to ensure that baselineskip is used, therefore these lines will al
 	\newcommand\ReportTypeFont[1]{{\NeoSansProReg \fontsize{16}{22}\selectfont #1 \par}}
 	\newcommand\TitleFont[1]{{\NeoSansProMed \fontsize{28}{35}\selectfont #1 \par}}
 	\newcommand\SubTitleFont[1]{{\NeoSansProReg \fontsize{20}{25}\selectfont #1 \par}}
@@ -60,11 +62,11 @@ purple,         fill=purple         \\%
 	\newcommand\titlefont[1]{{#1}}
 \else
     % If false
-	\titleformat{\part}[display]{\bfseries\huge \centering}{\bfseries\Huge \thepart}{1em}{\thispagestyle{empty}}{}
-	\titleformat{\chapter}{\bfseries\huge}{\thechapter}{1em}{\raggedright}
-	\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{\raggedright}
-	\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{\raggedright}
-	\titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection}{1em}{\raggedright}
+	\titleformat{\part}[display]{\bfseries\huge \centering}{\bfseries\Huge \thepart}{1em}{\thispagestyle{empty}#1}{}
+	\titleformat{\chapter}{\bfseries\huge}{\thechapter}{1em}{\raggedright#1}
+	\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{\raggedright#1}
+	\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{\raggedright#1}
+	\titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection}{1em}{\raggedright#1}
 	
 	% The \par is needed to ensure that baselineskip is used, therefore these lines will al
 	\newcommand\ReportTypeFont[1]{{\fontsize{16}{22}\selectfont #1 \par}}
@@ -111,16 +113,13 @@ purple,         fill=purple         \\%
 %]{\usebox\mybox}
 
 
-% Table of contents (TOC) and numbering of headings
-\setcounter{tocdepth}{1}    % Depth of table of content: sub sections will not be included in table of contents
-\setcounter{secnumdepth}{2} % Depth of section numbering: sub sub sections are not numbered
 
 \makeatletter % Reset chapter numbering for each part
 \@addtoreset{chapter}{part}
 \makeatother  
 
 % Spacing of titles and captions
-\titlespacing\chapter{0pt}{0pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+%\titlespacing\chapter{0pt}{0pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 \titlespacing\section{0pt}{12pt plus 3pt minus 3pt}{2pt plus 1pt minus 1pt}
 \titlespacing\subsection{0pt}{8pt plus 2pt minus 2pt}{0pt plus 1pt minus 1pt}
 \titlespacing\subsubsection{0pt}{4pt plus 1pt minus 1pt}{-2pt plus 1pt minus 1pt}
@@ -244,3 +243,161 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
   \clearpage
   \ifodd\value{page}\hbox{}\newpage\fi
 }
+
+
+
+
+% ==========================================================
+% Handle chapter headings
+% and define a new \chapterwithimage chapter style
+% ==========================================================
+
+\definecolor{DarkGrey}{rgb}{0.40,0.40,0.40}
+
+% define variables to hold corrections to chapter image location
+\newcommand{\thechapterimage}{}
+\newcommand{\chapimgscale}{2}
+\newcommand{\chapimgdx}{1cm}
+\newcommand{\chapimgdy}{1cm}
+% define command to set the chapter image and parameters
+\newcommand{\chapterimage}[4]{
+	\renewcommand\chapimgdx{#2}
+	\renewcommand\chapimgdy{#3}
+	\renewcommand\thechapterimage{#4}
+	\renewcommand\chapimgscale{#1}
+}
+
+
+\newcounter{chapterwithimage}   % New counter for \chapterwithimage
+
+% Make the new counter mirror the old chapter counter
+% https://tex.stackexchange.com/questions/425983/merging-unifying-two-counters
+\makeatletter
+\let\c@chapterwithimage=\c@chapter
+\makeatother
+
+% create new chapterwithimage class
+\titleclass{\chapterwithimage}{top}[\chapter]
+
+\ifneosanspro
+	% If True set headings to NeoSans Pro
+	%\newfontface\NeoSansProReg{NeoSansPro-Regular.otf}
+	%\newfontface\NeoSansProMed{NeoSansPro-Medium.otf}
+	\titleformat{\chapter}{\NeoSansProMed\huge}{\thechapter}{1em}{\raggedright#1}
+	
+	% set the format of the \chapterwithimage
+	\titleformat{\chapterwithimage}      % <numbered-entry-format>
+	{\bfseries\huge}                     % <format-to-apply-to-title>
+	{}                                   % <label-to-print>
+	{1em}                                % <separation-between-label-and-title>
+	{                                    % <code-preceeding-title>
+		\ifx\thechapterimage\empty
+		\raggedright#1         % Fall back to standard heading if the \thechapterimage is empty
+		\else
+		% Create a chapter heading with an image spanning the top part of the page
+		\begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0,outer sep=0}]
+			\begin{scope}
+				\clip (current page.north west) rectangle ($(current page.north east) + (0cm,-10.5cm)$); 
+				\node[anchor=center] at ($(current page.north) + (0cm,-5.25cm) - (\chapimgdx, \chapimgdy)$) {\includegraphics[width=\chapimgscale\paperwidth]{\thechapterimage}};	
+			\end{scope}
+			\node[draw, anchor=north west, rounded corners=10pt,fill=DarkGrey!10!white,text opacity=1,draw=DarkGrey,draw opacity=1,line width=1.5pt,fill opacity=.8,inner sep=12pt] at ($(current page.north west) + (3cm,-8cm)$) {\NeoSansProMed\huge{\thechapterwithimage. #1\strut\makebox[22cm]{}}};
+		\end{tikzpicture}
+		\fi
+	}
+	[\vspace{6.5cm}]
+	
+	% Spacing of titles and captions
+	\titlespacing\chapter{0pt}{0pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+	\titlespacing\chapterwithimage{0pt}{0pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+	
+\else
+	% If false
+	\titleformat{\chapter}{\bfseries\huge}{\thechapter}{1em}{\raggedright#1}
+
+	% set the format of the \chapterwithimage
+	\titleformat{\chapterwithimage}      % <numbered-entry-format>
+	{\bfseries\huge}                     % <format-to-apply-to-title>
+	{}                                   % <label-to-print>
+	{1em}                                % <separation-between-label-and-title>
+	{                                    % <code-preceeding-title>
+		\ifx\thechapterimage\empty
+		\raggedright#1         % Fall back to standard heading if the \thechapterimage is empty
+		\else
+		% Create a chapter heading with an image spanning the top part of the page
+		\begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0,outer sep=0}]
+			\begin{scope}
+				\clip (current page.north west) rectangle ($(current page.north east) + (0cm,-10.5cm)$); 
+				\node[anchor=center] at ($(current page.north) + (0cm,-5.25cm) - (\chapimgdx, \chapimgdy)$) {\includegraphics[width=\chapimgscale\paperwidth]{\thechapterimage}};	
+			\end{scope}
+			\node[draw, anchor=north west, rounded corners=10pt,fill=DarkGrey!10!white,text opacity=1,draw=DarkGrey,draw opacity=1,line width=1.5pt,fill opacity=.8,inner sep=12pt] at ($(current page.north west) + (3cm,-8cm)$) {\huge\bfseries\textcolor{black}{\thechapterwithimage. #1\strut\makebox[22cm]{}}};
+		\end{tikzpicture}
+		\fi
+	}
+	[\vspace{6.5cm}]
+	
+	% Spacing of titles and captions
+	\titlespacing\chapter{0pt}{0pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+	\titlespacing\chapterwithimage{0pt}{0pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\fi
+
+
+% ==========================================================
+% Setup Table of Contents
+% ==========================================================
+
+% ensure that section, table and figure numbers reset in new chapters using \chapterwithimage
+\counterwithin{section}{chapterwithimage}
+\counterwithin{table}{chapterwithimage}
+\counterwithin{figure}{chapterwithimage}
+
+% control how \chapterwithimage is displayed in TOC
+\titlecontents{chapterwithimage}   % <section-type>
+[1em]                              % <left margin>
+{\vspace{1em}}                     % <above-code>
+{\bfseries\contentslabel{1em}\hspace*{0.5em}}  % <numbered-entry-format>
+{\bfseries\hspace*{-1em}}                                 % <unnumbered-entry-format>
+{\titlerule*[.5pc]{.}\bfseries\contentspage}  % <filler-page-format>
+[]
+
+% control how \chapter is displayed in TOC (to ensure they are the same)
+\titlecontents{chapter}            % <section-type>
+[1em]                              % <left margin>
+{\vspace{1em}}                     % <above-code>
+{\bfseries\contentslabel{1em}\hspace*{0.5em}}  % <numbered-entry-format>
+{\bfseries\hspace*{-1em}}          % <unnumbered-entry-format>
+{\titlerule*[.5pc]{.}\bfseries\contentspage}  % <filler-page-format>
+[]
+
+% control how \section is displayed in TOC (to ensure they are the same)
+\titlecontents{section}            % <section-type>
+[3.5em]                              % <left margin>
+{}                     % <above-code>
+{\contentslabel{2em}}  % <numbered-entry-format>
+{\bfseries\hspace*{-2em}}                                 % <unnumbered-entry-format>
+{\titlerule*[.5pc]{.}\contentspage}  % <filler-page-format>
+[]
+
+% The \chapterwithimage command reorganizes TOC levels, therefore we
+% define an empty style for subsections in toc, to ensure they do not show up in toc.
+
+% control how \section is displayed in TOC (to ensure they are the same)
+\titlecontents{subsection}            % <section-type>
+[]                                 % <left margin>
+{}                     % <above-code>
+{}  % <numbered-entry-format>
+{}                                 % <unnumbered-entry-format>
+{}  % <filler-page-format>
+[]
+
+% Table of contents (TOC) and numbering of headings
+\setcounter{tocdepth}{2}    % Depth of table of content: sub sections will not be included in table of contents
+\setcounter{secnumdepth}{3} % Depth of section numbering: sub sub sections are not numbered
+
+% Because of the new \chapterwithimage command, all section levels are increased by one.
+% If the \chapterwithimage command is removed, use the following:
+%\setcounter{tocdepth}{1}    % Depth of table of content: sub sections will not be included in table of contents
+%\setcounter{secnumdepth}{2} % Depth of section numbering: sub sub sections are not numbered
+
+
+
+
