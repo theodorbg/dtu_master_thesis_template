@@ -56,8 +56,8 @@ purple,         fill=purple         \\%
 	
 	% The \par is needed to ensure that baselineskip is used, therefore these lines will al
 	\newcommand\ReportTypeFont[1]{{\NeoSansProReg \fontsize{16}{22}\selectfont #1 \par}}
-	\newcommand\TitleFont[1]{{\NeoSansProMed \fontsize{28}{35}\selectfont #1 \par}}
-	\newcommand\SubTitleFont[1]{{\NeoSansProReg \fontsize{20}{25}\selectfont #1 \par}}
+	\newcommand\TitleFont[1]{{\NeoSansProMed \fontsize{28}{35}\selectfont \spaceskip=1\fontdimen2\font \xspaceskip=0pt\relax \raggedright #1 \par}}
+	\newcommand\SubTitleFont[1]{{\NeoSansProReg \fontsize{20}{25}\selectfont \spaceskip=1\fontdimen2\font \xspaceskip=0pt\relax \raggedright #1 \par}}
 	\newcommand\AuthorFont[1]{{\NeoSansProMed \fontsize{16}{22}\selectfont #1 \par}}
 	\newcommand\titlefont[1]{{#1}}
 \else
@@ -70,8 +70,8 @@ purple,         fill=purple         \\%
 	
 	% The \par is needed to ensure that baselineskip is used, therefore these lines will al
 	\newcommand\ReportTypeFont[1]{{\fontsize{16}{22}\selectfont #1 \par}}
-	\newcommand\TitleFont[1]{{\fontsize{28}{35}\selectfont \bfseries #1 \par}}
-	\newcommand\SubTitleFont[1]{{\fontsize{20}{25}\selectfont #1 \par}}
+	\newcommand\TitleFont[1]{{\fontsize{28}{35}\selectfont \bfseries \spaceskip=1\fontdimen2\font \xspaceskip=0pt\relax \raggedright #1 \par}}
+	\newcommand\SubTitleFont[1]{{\fontsize{20}{25}\selectfont \spaceskip=1\fontdimen2\font \xspaceskip=0pt\relax \raggedright #1 \par}}
 	\newcommand\AuthorFont[1]{{\fontsize{16}{22}\selectfont \bfseries #1 \par}}
 	\newcommand\titlefont[1]{{#1}}
 \fi
