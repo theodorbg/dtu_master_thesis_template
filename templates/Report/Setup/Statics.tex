@@ -39,3 +39,25 @@
 
 % Back page text description
 \newcommand{\backpagetextdescription}{\blindtext}   % comment out, or replace \blindtext with own description to be shown on backpage
+
+
+% -------------------------------------------------------------
+% Some switches that will affect compilation of the document
+% -------------------------------------------------------------
+\newif\ifneosanspro     % define switch to control if NeoSansPro font is used for headings
+
+% The DTU design team has proposed to use Neo Sans for headings - and Arial for the body text.
+% The NeoSansPro font is not freely distributable and must be obtained from the DTU design team 
+% see https://www.designguide.dtu.dk/standard-design-basics#standard-user-typography-banner
+% 
+% To use NeoSansPro please upload both NeoSansPro-Regular.otf and NeoSansPro-Medium.otf to the root directory
+% of the project (same folder as main.tex), and set the switch below to True
+
+%\neosansprotrue         % Use the NeoSansPro font (make sure it is available!)
+\neosansprofalse        % Fall back to using Arial or other Sans Serif font
+
+
+
+\newif\ifappendices     % define switch to control if appendices are included in the compilation or not
+\appendicestrue         % include appendices
+%\appendicesfalse        % don't include appendices

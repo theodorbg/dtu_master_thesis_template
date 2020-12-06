@@ -35,8 +35,12 @@
 
 \printbibliography[heading=bibintoc,title={References}]
 \cleardoublepage 
-\appendix
-\input{Backmatter/Appendix.tex}
+\ifappendices
+%	\appendix
+	\begin{appendices}
+		\input{Backmatter/Appendix.tex}
+	\end{appendices}
+\fi
 \cleartoleftpage
 \input{Backmatter/Backpage.tex}
 
