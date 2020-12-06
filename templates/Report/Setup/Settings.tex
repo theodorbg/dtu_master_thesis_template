@@ -17,6 +17,7 @@
 
 \newcommand{\dtulogocolour}{white} % Colour of the DTU logo: white, black or dtured
 \newcommand{\frontpagetextcolour}{white} % front page text colour: white or black
+\newcommand{\backpagetextcolour}{white} % back page text colour: white or black
 \colorlet{frontbackcolor}{blue} % Set the background colour of the front- and back page. Choose the colour so it matches the main colour of front page picture
 
 % DTU colours for diagrams
@@ -35,6 +36,8 @@ purple,         fill=purple         \\%
 }
 
 
+\newlength{\tempdima} % Used for scaling images in sideways figures
+
 % Font
 % There is no corporate serif font in the DTU design guide. The DTU design team has proposed to use Neo Sans for headings - and Arial for the body text.
 % To change heading font to NeoSans Pro please upload both NeoSansPro-Regular.otf and NeoSansPro-Medium.otf to the root directory.
@@ -49,8 +52,11 @@ purple,         fill=purple         \\%
 \titleformat{\section}{\NeoSansProMed\Large}{\thesection}{1em}{\raggedright}
 \titleformat{\subsection}{\NeoSansProMed\large}{\thesubsection}{1em}{\raggedright}
 \titleformat{\subsubsection}{\NeoSansProMed\normalsize}{\thesubsubsection}{1em}{\raggedright}
-\newcommand\TitleFont[1]{{\NeoSansProMed #1}}
-\newcommand\titlefont[1]{{\NeoSansProReg #1}}
+\newcommand\ReportTypeFont[1]{{\NeoSansProReg \fontsize{16}{22}\selectfont #1 \par}}
+\newcommand\TitleFont[1]{{\NeoSansProMed \fontsize{28}{35}\selectfont #1 \par}}
+\newcommand\SubTitleFont[1]{{\NeoSansProReg \fontsize{20}{25}\selectfont #1 \par}}
+\newcommand\AuthorFont[1]{{\NeoSansProMed \fontsize{16}{22}\selectfont #1 \par}}
+\newcommand\titlefont[1]{{#1}}
 }
 { % If false
 \titleformat{\part}[display]{\bfseries\huge \centering}{\bfseries\Huge \thepart}{1em}{\thispagestyle{empty}}{}
@@ -58,9 +64,15 @@ purple,         fill=purple         \\%
 \titleformat{\section}{\bfseries\Large}{\thesection}{1em}{\raggedright}
 \titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{\raggedright}
 \titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection}{1em}{\raggedright}
-\newcommand\TitleFont[1]{{\bfseries #1}}
+
+% The \par is needed to ensure that baselineskip is used, therefore these lines will al
+\newcommand\ReportTypeFont[1]{{\fontsize{16}{22}\selectfont #1 \par}}
+\newcommand\TitleFont[1]{{\fontsize{28}{35}\selectfont \bfseries #1 \par}}
+\newcommand\SubTitleFont[1]{{\fontsize{20}{25}\selectfont #1 \par}}
+\newcommand\AuthorFont[1]{{\fontsize{16}{22}\selectfont \bfseries #1 \par}}
 \newcommand\titlefont[1]{{#1}}
 }
+
 \urlstyle{sf}
 %\def\UrlFont{\NeoSansProReg}
 
@@ -77,23 +89,23 @@ purple,         fill=purple         \\%
 \newsavebox\mybox
 \savebox\mybox{\tikz[color=grey,opacity=0.5]\node{Template};}
 
-\newwatermark*[
-  oddpages,
-  angle=60,
-  scale=12,
-  %fontfamily=qhv,
-  xpos=-40,
-  ypos=30,
-]{\usebox\mybox}
-
-\newwatermark*[
-  evenpages,
-  angle=60,
-  scale=12,
-  %fontfamily=qhv,
-  xpos=-50,
-  ypos=30,
-]{\usebox\mybox}
+%\newwatermark*[
+%  oddpages,
+%  angle=60,
+%  scale=12,
+%  %fontfamily=qhv,
+%  xpos=-40,
+%  ypos=30,
+%]{\usebox\mybox}
+%
+%\newwatermark*[
+%  evenpages,
+%  angle=60,
+%  scale=12,
+%  %fontfamily=qhv,
+%  xpos=-50,
+%  ypos=30,
+%]{\usebox\mybox}
 
 
 % Table of contents (TOC) and numbering of headings
@@ -117,7 +129,7 @@ purple,         fill=purple         \\%
     \fancyfoot{}
     \renewcommand{\headrulewidth}{0pt}
     \fancyfoot[LE,RO]{\footnotesize \thepage}
-    \fancyfoot[RE,LO]{\footnotesize \thesistitle} % - \rightmark
+    \fancyfoot[RE,LO]{\footnotesize \reporttitle} % - \rightmark
     \fancyhfoffset[E,O]{0pt}
 }
 \fancypagestyle{plain}{% Chapter pages
@@ -125,7 +137,7 @@ purple,         fill=purple         \\%
     \fancyfoot{}
     \renewcommand{\headrulewidth}{0pt}
     \fancyfoot[LE,RO]{\footnotesize \thepage}
-    \fancyfoot[RE,LO]{\footnotesize \thesistitle} % - \leftmark
+    \fancyfoot[RE,LO]{\footnotesize \reporttitle} % - \leftmark
     \fancyhfoffset[E,O]{0pt}
 }
 
@@ -147,20 +159,36 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
 
 
 % Hypersetup
-\hypersetup{
-    pdfauthor={\thesisauthor},
-    pdftitle={\thesistitle},
-    pdfsubject={\thesissubtitle},
-    pdfdisplaydoctitle,
-    bookmarksnumbered=true,
-    bookmarksopen,
-    breaklinks,
-    linktoc=all,
-    plainpages=false,
-    unicode=true,
-    colorlinks=false,
-    hidelinks,                        % Do not show boxes or coloured links.
-}
+\ifdefined \reportsubtitle
+	\hypersetup{
+	    pdfauthor={\reportauthors},
+	    pdftitle={\reporttitle},
+	    pdfsubject={\reportsubtitle},
+	    pdfdisplaydoctitle,
+	    bookmarksnumbered=true,
+	    bookmarksopen,
+	    breaklinks,
+	    linktoc=all,
+	    plainpages=false,
+	    unicode=true,
+	    colorlinks=false,
+	    hidelinks,                        % Do not show boxes or coloured links.
+	}
+\else
+	\hypersetup{
+		pdfauthor={\reportauthors},
+		pdftitle={\reporttitle},
+		pdfdisplaydoctitle,
+		bookmarksnumbered=true,
+		bookmarksopen,
+		breaklinks,
+		linktoc=all,
+		plainpages=false,
+		unicode=true,
+		colorlinks=false,
+		hidelinks,                        % Do not show boxes or coloured links.
+	}
+\fi
 
 
 % Listings setup

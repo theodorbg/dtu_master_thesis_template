@@ -1,13 +1,41 @@
-\newcommand{\documenttype}{Master Thesis}
-\newcommand{\thesistitle}{Thesis title}
-\newcommand{\thesissubtitle}{Thesis subtitle}
 
-\newcommand{\thesisauthor}{Author} % Your name :) 
-\newcommand{\studentnumber}{s123456}
-\newcommand{\thedate}{Date, year} % For example "June, 2019"
+% Report type and number
+%\newcommand{\documenttype}{BYG report}
+\newcommand{\reportnumber}{BYG R-XXX} % For example "BYG R-432"
+\newcommand{\thedate}{month, year} % For example "June, 2019"
 
+% Report title
+\newcommand{\reporttitle}{Report title}
+\newcommand{\reportsubtitle}{Report subtitle}    % comment or leave blank if no sub-title
+
+% report authors
+\newcommand{\reportauthors}{Author1, Author2 \& Author3 }
+\newcommand{\qcby}{Lars Larsen}                       % Specify who quality checked the report, comment or leave blank if not needed
+
+% ISSN / ISBN information
+\newcommand{\reportISSNelectronic}{0000-0000}         % ISSN for electronic version, comment if not needed/known
+\newcommand{\reportISBNelectronic}{000-00-0000-000-0} % ISBN for electronic version, comment if not needed/known
+%\newcommand{\reportISSNprinted}{0000-0000}            % ISSN for printed version, comment if not needed/known
+%\newcommand{\reportISBNprinted}{000-00-0000-000-0}    % ISBN for printed version, comment if not needed/known
+
+% Department information and address
 \newcommand{\department}{DTU Civil Engineering}
 \newcommand{\departmentdescriber}{Department of Civil Engineering}
 \newcommand{\addressI}{Brovej, Building 118}
-\newcommand{\addressII}{2800 Kgs. Lyngby}
+\newcommand{\addressII}{2800~Kgs. Lyngby}       % mbox used to prevent hyphenation
 \newcommand{\departmentwebsite}{www.byg.dtu.dk}
+\newcommand{\departmentphone}{+45 4525 1700}
+
+% Cover image information
+\newcommand{\coverimage}{./Pictures/DTU_stock_photo.jpg}
+\newcommand{\coverimagedescription}{...write photo credits or description here...}
+
+% Title image will be cropped to the predefined image box.
+% Use settings below to control its size (zoom) and relative position in box
+\newcommand{\coverimagewidth}{\paperwidth}    % use \paperwidth to scale image to width of the paper, or use a specific measure e.g. 30cm or 10cm to scale up or down 
+\newcommand{\coverimagedx}{0cm}     % use 0cm to have image centered, positive value moves image left
+\newcommand{\coverimagedy}{-2cm}    % use 0cm to have image centered, positive value moves image down
+
+
+% Back page text description
+\newcommand{\backpagetextdescription}{\blindtext}   % comment out, or replace \blindtext with own description to be shown on backpage

@@ -1,22 +1,63 @@
-\newgeometry{left=28mm,right=14mm,top=42mm,bottom=14mm}
+\newgeometry{left=17mm,right=17mm,top=50mm,bottom=20mm}
 \thispagestyle{empty}
 \pagecolor{frontbackcolor}
-\color{white}
+\color{\backpagetextcolour}
 
-\blindtext % Remove this for a blank page or write your own text
+
+% DTU department (to change see Setup/Settings.tex) 
+\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=north east, 
+	xshift=-17mm, 
+	yshift=-12mm] 
+	at (current page.north east) 
+	{
+		\color{\backpagetextcolour}
+		\begin{tabular}{r} 
+			\textbf{\department} \\ 
+			\departmentdescriber
+		\end{tabular}
+	}; 
+\end{tikzpicture}
+
+% DTU logo
+\begin{tikzpicture}[remember picture, overlay]
+	\node[anchor=north west, 
+	xshift=13.7mm, 
+	yshift=-8.3mm] 
+	at (current page.north west) 
+	{\includegraphics[width=14.75mm,keepaspectratio]{Pictures/Logos/\dtulogocolour_\targetcolourmodel.pdf}}; 
+\end{tikzpicture}
+
+\ifdefined\backpagetextdescription
+	\backpagetextdescription % Remove this for a blank page or write your own text
+\fi
 
 \vspace*{\fill}
 
 
-
 \begin{tabular}{@{}l}
-    Technical \\ 
-    University of \\ 
-    Denmark \\
-    \\
+	\reportnumber \\
+	\thedate \\
+	\\
+ 	\ifdefined \reportISSNelectronic
+		ISSN: \reportISSNelectronic ~(electronic version) \\
+	\fi
+	\ifdefined \reportISBNelectronic
+		ISBN: \reportISBNelectronic ~(electronic version) \\
+	\fi
+	\ifdefined \reportISSNprinted
+		ISSN: \reportISSNprinted ~(printed version) \\
+	\fi
+	\ifdefined \reportISBNprinted
+		ISBN: \reportISBNprinted ~(printed version) \\
+	\fi
+	\\
+    Technical University of Denmark \\
+	\\
+    \departmentdescriber \\
     \addressI \\
     \addressII \\
-    Tlf. 4525 1700 \\
+    Phone \departmentphone \\
     \\
     \url{\departmentwebsite}
 \end{tabular}
