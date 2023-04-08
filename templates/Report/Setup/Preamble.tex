@@ -1,0 +1,73 @@
+%\usepackage{microtype}      % better looking text
+%\usepackage[utf8]{inputenc}
+%\usepackage[dvips]{graphicx}       % Required for including pictures
+\usepackage{fontspec}       % Package for custom fonts
+\usepackage[]{geometry}     % Package for changing page margins (before fancyhdr) 
+\usepackage{fancyhdr}       % Package to change header and footer
+\usepackage{parskip}        % Package to tweak paragraph skipping (instead of indents a small skip is added after every paragraph)
+\usepackage[explicit]{titlesec}
+\usepackage{titletoc}
+%\usepackage{chngcntr}
+\usepackage{tikz}           % Package for drawing
+\usetikzlibrary{calc, positioning, backgrounds, decorations.pathreplacing} % Required for drawing custom tikz shapes
+\usepackage{pgfplots}       % Package for creating graphs and charts
+\usepackage{xcolor}         % Package for defining DTU colours to be used
+\usepackage{amsmath}        % For aligning equations among other
+\usepackage{siunitx}        % SI units
+\usepackage{listings}       % Package for inserting code, (before cleveref)
+\PassOptionsToPackage{hyphens}{url} % Ability to line break urls at hyphens
+\usepackage{hyperref}       % Package for cross referencing (also loads url package)
+%\hypersetup{colorlinks=true, urlcolor=blue}   % overridden in Settings.tex
+\usepackage{cleveref}       % improved cross referencing
+\usepackage{textcomp}       % \textdegree = °C and other useful symbols
+\usepackage[english]{babel} % localisation 
+\usepackage{caption}        % better captions
+\usepackage{subcaption}     % captions for subfigures
+\usepackage{csquotes}       % For biblatex with babel
+\usepackage[backend=biber,style=apa,sorting=nyt]{biblatex} % Package for bibliography (citing),                   
+                            %                                citationstyle "apa": "author (year)"
+                            %                                bibliography sorted by name, year, title (nyt)
+\bibliography{bibliography.bib}   % Name of file that includes bibliography
+\usepackage{tabularx}       % for ability to adjust column spacing in tabular better
+\usepackage{colortbl}
+\usepackage{booktabs}       % for better tables
+\usepackage{threeparttable,threeparttablex}  % for tables with footnotes and more
+\usepackage{caption}        % for customizing captions of figures and tables
+\captionsetup[table]{skip=10pt}
+
+\usepackage{float}          % floating figures in correct places
+\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt) 
+%\usepackage[printwatermark=false]{xwatermark} % Package for wartermark. Toggle printwatermark true or false to include or remove the watermark
+\usepackage{blindtext}      % for filling a paragraph with rubbish text as a placeholder
+\usepackage{wrapfig}        % for wrapping text around figures
+\usepackage{rotating}       % for sidewaysfigures (rotated 90 degrees)
+
+\usepackage{siunitx}        % for nice typesetting of numbers and ranges with units
+\sisetup{separate-uncertainty, multi-part-units=single}     % multi-part-units may be repeat, single, or brackets
+\usepackage[toc]{appendix}  % for better control over appendices, "toc" option to include heading "Appendices" in table of contents
+
+
+
+
+% Additional packages
+
+\usepackage[final]{pdfpages}   % To import pages from a pdf file. Use option "draft" to not import the pdf
+\usepackage{doi}           % for better doi hyperlinks
+\usepackage{longtable, ltcaption}  % for tables that span multiple pages
+\usepackage{lipsum}        % for generating "lorem ipsum" text to be used as placeholder for unwritten sections
+\usepackage{pstricks}      % for drawing diagrams and graphics programatically
+\usepackage{rotfloat}      % for redefining new rotated floating environments
+
+% New column types to control multiline text in tables
+% See: https://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage[version=4]{mhchem}  %  for typesetting chemical molecular formulae and equations
+\usepackage{afterpage}    % for issuing commands after current page is typeset. e.g. use \afterpage{\clearpage} to flush out all floats before next text page is typeset.
+\usepackage{placeins}     % defines a \FloatBarrier command, beyond which floats may not pass
+\usepackage{textcomp}     % for additional symbols and glyphs
+\usepackage{wasysym}      % for additional symbols and glyphs
+\usepackage{outlines}     % for outline-style indented lists

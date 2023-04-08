@@ -1,0 +1,50 @@
+%\documentclass[a4paper,twoside,11pt]{report} %openright
+\documentclass[a4paper,oneside,11pt]{report} % will work also as a one-sided document
+
+\input{Setup/Statics.tex}    % Setup title, authors etc. in this file
+\input{Setup/Preamble.tex}   % all usepackage statements go in this file
+\input{Setup/Settings.tex}   % additional definitions here, changes should not be necessary 
+
+\begin{document}
+
+\pagenumbering{roman}
+\input{Frontmatter/Frontpage.tex}
+\pagecolor{white}
+\newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
+\pagestyle{empty}
+\cleardoublepage 
+\input{Frontmatter/Copyright.tex}
+\clearpage 
+\pagestyle{main}
+%\input{Frontmatter/Approval.tex}
+%\clearpage 
+\input{Frontmatter/Abstract.tex}
+\clearpage 
+\input{Frontmatter/Acknowledgements.tex}
+\cleardoublepage 
+\tableofcontents
+\cleardoublepage 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\input{Chapters/01_Introduction.tex}
+\cleardoublepage 
+\input{Chapters/02_Colours.tex}
+\cleardoublepage 
+\input{Chapters/03_Examples.tex}
+\cleardoublepage 
+\input{Chapters/04_Chapter_with_image.tex}
+\cleardoublepage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\printbibliography[heading=bibintoc,title={References}]
+\cleardoublepage 
+\ifappendices
+	\begin{appendices}
+		\input{Backmatter/Appendix.tex}
+	\end{appendices}
+\fi
+\cleartoleftpage
+\input{Backmatter/Backpage.tex}
+
+\end{document}

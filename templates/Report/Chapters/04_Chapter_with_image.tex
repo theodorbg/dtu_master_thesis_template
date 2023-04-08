@@ -1,0 +1,27 @@
+\chapterimage{1}{0cm}{-3cm}{./Pictures/DTU_stock_photo.jpg}
+% First argument is used to scale the size the image
+% Second argument specify the distance to translate the image in x-direction
+% Third argument specify the distance to translate the image in y-direction
+% Fourth argument is the path and filename of the image to display
+\chapterwithimage{Chapters with image headers}
+
+This chapter is an example of the use of chapters with image/photo headers. We use the custom command \texttt{\textbackslash chapterwithimage\{\}} in place of the standard  \texttt{\textbackslash chapter\{\}} command. In you latex document, you may use it like shown below:
+
+
+\begin{verbatim}
+% First we define the image to use and its position/scaling:
+\chapterimage{1}{0cm}{-3cm}{./Pictures/DTU_stock_photo.jpg}
+% First argument is a unitelss factor used to scale the size the image
+% Second argument translates the image horizontally
+% Third argument translates the image vertically
+% Fourth argument is the path and filename of the image to display
+
+% Then create the new chapter:
+\chapterwithimage{Chapters with image headers}
+\end{verbatim}
+
+You may use the \texttt{\textbackslash chapterwithimage\{\}} command for all chapters, or mix it with normal chapters using the \texttt{\textbackslash chapter\{\}} command. The two commands are interchangeable, and numbering is continuous across the two types of chapters.
+
+The definition of the new chapter command can be found in \texttt{./Setup/Settings.tex}, and may be used as a template to define your own style of image headers for chapters.
+
+{\bfseries Notice:} The \texttt{\textbackslash chapterwithimage\{\}} command does not currently wrap long lines. Headings should be kept short enough to stay on one line. Allowing wrapping of chapter headings in this style should be fairly simple, but has not been implemented yet.

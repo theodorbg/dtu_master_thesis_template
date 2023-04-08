@@ -1,0 +1,54 @@
+\thispagestyle{empty}
+\setcounter{page}{1}
+\vspace*{\fill}
+
+\textbf{\reporttitle} \newline
+\ifdefined\reportsubtitle
+	\reportsubtitle
+\fi
+
+\smallskip
+
+\ifdefined\documenttype
+	\documenttype \newline
+\fi
+\ifdefined\reportnumber
+	\reportnumber \newline
+\fi
+\thedate
+
+\smallskip
+
+By \newline
+\reportauthors
+
+\bigskip
+
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+    Copyright: & Reproduction of this publication in whole or in part must include the customary bibliographic citation, including author attribution, report title, etc. \\
+    &\\
+    \ifdefined \coverimage
+    \ifdefined \coverimagedescription
+    Cover image: & \coverimagedescription \\
+    & \\
+    \fi
+    \fi
+    Published by: & DTU, \mbox{\departmentdescriber}, \mbox{\addressI}, \mbox{\addressII},~Denmark  \\
+    & \url{\departmentwebsite} \\
+    & \\
+    \ifdefined \reportISSNelectronic
+	    ISSN: & \reportISSNelectronic ~(electronic version) \\
+ 	\fi
+ 	\ifdefined \reportISBNelectronic
+    ISBN: & \reportISBNelectronic ~(electronic version) \\
+    \fi
+    & \\
+    \ifdefined \reportISSNprinted
+	    ISSN: & \reportISSNprinted ~(printed version) \\
+ 	\fi
+ 	\ifdefined \reportISBNprinted
+	    ISBN: & \reportISBNprinted ~(printed version) \\
+ 	\fi
+\end{tabularx}
+
+

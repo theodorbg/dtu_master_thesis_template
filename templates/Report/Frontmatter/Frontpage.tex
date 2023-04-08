@@ -1,0 +1,79 @@
+\title{\reporttitle} 
+\author{\reportauthors} 
+\date{\thedate} 
+
+\begin{titlepage}
+
+\newlength{\frontpagemargin}
+\setlength{\frontpagemargin}{1.7cm}
+\newlength{\frontpagetextwidth}
+\setlength{\frontpagetextwidth}{\paperwidth-2\frontpagemargin}
+
+\newgeometry{left=11mm,right=11mm,top=50mm,bottom=0pt}
+\pagecolor{frontbackcolor}
+\color{\frontpagetextcolour}
+
+
+% DTU department (to change see Setup/Settings.tex) 
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north east, 
+      xshift=-10mm, 
+      yshift=-12mm] 
+      at (current page.north east) 
+      {
+        \color{\frontpagetextcolour}
+        \begin{tabular}{r} 
+        \textbf{\department} \\ 
+        \departmentdescriber
+        \end{tabular}
+      }; 
+\end{tikzpicture}
+
+% DTU logo
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor=north west, 
+      xshift=13.7mm, 
+      yshift=-8.3mm] 
+     at (current page.north west) 
+     {\includegraphics[width=14.75mm,keepaspectratio]{Pictures/Logos/\dtulogocolour_\targetcolourmodel.pdf}}; 
+\end{tikzpicture}
+
+% Report title and other text
+\begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0,outer sep=0}]
+	\node[anchor=north west, text width=\frontpagetextwidth] at ($(current page.north west) + (\frontpagemargin, -5cm)$) {
+		\color{\frontpagetextcolour}
+		\ReportTypeFont{\reportnumber} \smallskip
+		\ReportTypeFont{\thedate} 
+	};
+
+	\node[anchor=north west, text width=\frontpagetextwidth] at ($(current page.north west) + (\frontpagemargin, -8cm)$) {
+		\color{\frontpagetextcolour}
+		\TitleFont{\reporttitle} \bigskip \bigskip
+		\ifdefined\reportsubtitle 
+			\SubTitleFont{\reportsubtitle}	
+		\fi
+	};
+
+	\node[anchor=north west, text width=\frontpagetextwidth] at ($(current page.north west) + (\frontpagemargin, -13.5cm)$) {
+		\color{\frontpagetextcolour}
+		\AuthorFont{\reportauthors} 
+	};
+\end{tikzpicture}
+
+
+% White box lower part of front page, will only show if photo is smaller than box.
+\begin{tikzpicture}[remember picture,overlay]
+	\fill[fill=white] (current page.south west) rectangle($(current page.south east) + (0cm,14.0cm)$);
+\end{tikzpicture}
+
+% Cover photo
+\begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0,outer sep=0}]
+\begin{scope}
+	\clip (current page.south west) rectangle ($(current page.south east) + (0cm,14cm)$); 
+	\node[anchor=center] at ($(current page.south) + (0cm,7cm) - (\coverimagedx, \coverimagedy)$) {\includegraphics[width=\coverimagewidth]{\coverimage}};	
+\end{scope}
+\end{tikzpicture}
+
+
+
+\end{titlepage}
